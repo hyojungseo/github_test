@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header,title{
+        margin: 0px auto;
+        text-align: center;
+        font-size: 50px;
+        }
+
+    td{
+        width: 100px;
+        height: 100px;
+        border: 0px;
+        background-color: lightgray;
+        border-radius: 10px;
+        border: 0px solid white;
+    }
+
+    #playbutton{
+        background-color: tomato;
+        width: 120px;
+        height: 60px;
+        border: 0px solid;
+        border-collapse: collapse;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+
+    #title{
+        width: 100px;
+        height: 100px;
+        border: 0px; 
+        
+    }
+#snaketable td{
+    border: 0px solid;
+    width: 50px;
+    height: 50px;
+    border-collapse: collapse;
+}
+#snaketable,#title,#message{
+    display: table;
+    margin: 0px auto;
+}
+
+.snakebody{
+    background-color: greenyellow;
+}
+.snakehead{
+    background-color: green;
+    
+}
+
+#settime,#snakeset,#title{
+    font-size: 30px;
+    text-align: center;
+    color:black;
+    width: 400px;
+    display: table;
+    margin: 0px,auto;
+}
+#snakeset{
+    color:blue;
+    background-size:40px;
+    width: 600px;
+}
+#home{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+    </style>
+    <!--<style rel ="stylesheet" href="snakegame.css"></style>-->
+</head>
+<body>
+    <header>
+        <p style="font-weight: bolder;">Snake Game</p>
+        <img src="image/home.png" id="home" onclick="back()">
+    </header>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <div id="bord">
+    <table id="title" >
+        <tr>
+            <td><img src="image/apple.png" width="50px"></td>
+            <td id="applenumber">0</td>
+            <td><button id="playbutton" onclick="gameStart()" >▷ play</button></td>
+        </tr>
+    </table>
+    </div>
+    <div id="message">
+    <table id="title" >
+        <tr>
+            <td style="background-color: white;"><p id='settime' >사과를 10개 먹어봅시다!</p></td>
+        </tr>
+    </table>
+    </div>
+    <script src="snakegame.js"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 25px;  
+            border: 1px solid lightgray;
+        }
+        #border{
+            margin: 0px auto;
+            border: 1px solid lightgray;
+        }
+        #title{
+            margin: 0px auto;
+            padding-top: 30px auto;
+        }
+       
+        #result{
+            margin: 0px auto;
+            display: none;
+            width: 750px;
+            height: 50px;
+            background-color: aquamarine;
+        }
+        header{
+            text-align: center;
+            font-size: 40px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Callender
+        <br>
+        <img src="home.png" width="30px" height="30px" onclick="back()">
+        <hr>
+    </header>
+    <table id="title">
+        <td style="border: 0px;"><button onclick="minus()"><</button></td>
+        <td style="width: 200px;border: 0px;"><span id="thisyear" ></span></td>
+        <td style="border: 0px;"><button onclick="plus()">></button></td>
+        <td style="border: 0px;"><button onclick="today()">오늘날짜</button></td>
+    </table>
+    <table id="border"></table>
+    <textarea id="result"></textarea>
+
+
+    <script>
+        let thisday = new Date();
+        let thisyear = thisday.getFullYear();
+        let month = thisday.getMonth();
+        let day = thisday.getDate();
+        console.log(day);
+        let lastyear = thisyear-1;
+        console.log("thisyear: "+thisyear+" month: "+month+" lastyear: "+lastyear);
+        let $border = document.querySelector("#border");
+        // 처음 달력 테이블 세팅
+        function maketable(){
+             for(let i = 0;i<7;i++){
+            let $tr = document.createElement("tr");
+            for(let j = 0;j<7;j++){
+                let $td = document.createElement("td");
+                $tr.append($td);
+            }
+            $border.append($tr);
+        }
+
+        let daylist = ["일","월","화","수","목","금","토"];
+        for(let i = 0;i<daylist.length;i++){
+            $border.children[0].children[i].innerHTML = daylist[i];
+            $border.children[0].children[i].style.backgroundColor = "lightpink";
+            $border.children[0].children[i].style.color = "white";
+        }
+        }
+       
+        // 처음 달력 세팅
+        function startday(){
+
+        document.querySelector("#thisyear").innerHTML = thisyear+"년 "+(month+1)+" 월";
+        
+        let total = lastyear*365;
+        console.log(total);
+        total+=parseInt(lastyear/400);
+        total-=parseInt(lastyear/100);
+        total+=parseInt(lastyear/4);
+
+        let monthList =[31,28,31,30,31,30,31,31,30,31,30,31]; 
+        let temp = thisyear;
+
+
+        if(temp%400==0){
+            monthList =[31,29,31,30,31,30,31,31,30,31,30,31]; 
+        }else if(temp%100!=0 && temp%4==0){
+            monthList =[31,29,31,30,31,30,31,31,30,31,30,31]; 
+        }
+
+        for(let i = 0;i<month;i++){
+            total+=monthList[i];
+        }
+            total++;
+
+        console.log(total);
+        let days = total%7;
+        console.log(days);
+
+        let row = 1;
+        for(let i = 0;i<monthList[month];i++){
+            let index = (days+i)%7;
+            $border.children[row].children[index].innerText = (i+1);
+            $border.children[row].children[index].addEventListener("mouseover",showlist);
+            $border.children[row].children[index].addEventListener("mouseout",removelist);
+            $border.children[row].children[index].style.backgroundColor = "lightyellow";
+            if(index == 6){
+                row++;
+            }
+         }
+         for(let i = 1;i<7;i++){
+            for(let j = 0;j<7;j++){
+                if($border.children[i].children[j].innerText == day){
+                    $border.children[i].children[j].style.backgroundColor = "lightblue";
+                }
+            }
+         }
+
+        }
+
+// 오늘날짜
+function today(){
+    thisday = new Date();
+    thisyear = thisday.getFullYear();
+    month = thisday.getMonth();
+    lastyear = thisyear-1;
+    clearcalender();
+    startday();
+    
+}
+
+
+// 마우스 올리면
+function showlist(){    
+    this.style.backgroundColor="red";
+    let $result = document.querySelector("#result");
+    $result.style.display = "block";
+    let temp = ` ${month+1} 월 ${this.innerText} 일 일정`;
+    $result.innerText = temp;
+}   
+// 마우스 내리면
+function removelist(){
+    for(let i = 1;i<7;i++){
+        for(let j = 0;j<7;j++){
+            if($border.children[i].children[j].innerText!=""){
+                $border.children[i].children[j].style.backgroundColor = "lightyellow";
+                }else if($border.children[i].children[j].innerText==day && month == 5 && thisyear==2023){
+                    $border.children[i].children[j].style.backgroundColor = "lightblue";
+                }else{
+                $border.children[i].children[j].style.backgroundColor = "";
+                }
+            }
+        }  
+
+        document.querySelector("#result").style.display = "none";
+}
+
+
+ // 이전버튼       
+ function minus(){
+    
+    month--;
+    console.log("뺐을때: "+month);
+    if(month==-1){
+        month = 11;
+        thisyear--;
+    }
+    // 달력 지우기
+    clearcalender();
+    // 다시 채우기
+    newcalender(thisyear,month);
+ }
+ //이후 버튼
+ function plus(){
+    month++;
+    if(month==12){
+        month = 0;
+        thisyear++;
+    }
+    //달력 지우기
+    clearcalender()
+    // 다시 채우기
+    newcalender(thisyear,month);
+ }
+
+// 변경 이후 다시 채우기
+function newcalender(year,thismonth){
+    document.querySelector("#thisyear").innerHTML = year+"년 "+(thismonth+1)+" 월";
+        let beforeyear = year-1;
+        let total = beforeyear*365;
+        console.log(total);
+        total+=parseInt(beforeyear/400);
+        total-=parseInt(beforeyear/100);
+        total+=parseInt(beforeyear/4);
+
+        let monthList =[31,28,31,30,31,30,31,31,30,31,30,31]; 
+        let temp = year;
+
+
+        if(temp%400==0){
+            monthList =[31,29,31,30,31,30,31,31,30,31,30,31]; 
+        }else if(temp%100!=0 && temp%4==0){
+            monthList =[31,29,31,30,31,30,31,31,30,31,30,31]; 
+        }
+
+        for(let i = 0;i<thismonth;i++){
+            total+=monthList[i];
+        }
+            total++;
+
+        console.log(total);
+        let days = total%7;
+        console.log(days);
+
+        let row = 1;
+        for(let i = 0;i<monthList[thismonth];i++){
+            let index = (days+i)%7;
+            $border.children[row].children[index].innerText = (i+1);
+            $border.children[row].children[index].addEventListener("mouseover",showlist);
+            $border.children[row].children[index].addEventListener("mouseout",removelist);
+            $border.children[row].children[index].style.backgroundColor = "lightyellow";
+            if(index == 6){
+                row++;
+            }
+        }
+}
+
+
+ // 달력 다 지우기
+ function clearcalender(){
+    
+    for(let i = 1;i<7;i++){
+        for(let j = 0;j<7;j++){
+            $border.children[i].children[j].innerText = "";
+            $border.children[i].children[j].style.backgroundColor = "";
+        }
+        }  
+ }
+
+
+ function init(){
+        // 처음 달력 테이블 세팅
+            maketable();
+         // 처음 달력 세팅
+            startday();
+        }
+
+        init();
+    </script>
+</body>
+</html>

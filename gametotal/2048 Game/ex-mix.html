@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+         let backbord = [
+            [2, 0, 0, 0],
+            [0, 2, 2, 0],
+            [0, 0, 0, 2],
+            [2, 2, 4, 8]
+        ];
+
+        let size = 4;
+        let movekey = "ArrowRight"
+
+     function moveright(){
+        setright();
+
+        for(let i = 0;i<size;i++){
+            for(let j = 0;j<size;j++){
+                checkother(i ,j);// 주변에 값이 있는지 확인하기
+            }
+        }
+
+            setright();
+
+            console.log(backbord);
+            movekey= "ArrowLeft";
+        }
+
+     function setright(){
+                // 오른쪽
+            let rigthtemp=[];
+            for(let i = 0;i<size;i++){
+                let index = size-1;
+                for(let j = size-1;j>=0;j--){
+                    if(backbord[i][j]!=0){
+                        let input = backbord[i][j];
+                        backbord[i][j] = backbord[i][index];
+                        backbord[i][index] = input;
+                        index--;
+                    }
+                }
+            }
+            console.log(backbord);
+        }
+
+        function moveleft(){    
+
+           
+        setleft();// 왼쪽으로 값을 정렬하기
+
+        for(let i = 0;i<size;i++){
+                for(let j = 0;j<size;j++){
+                    checkother(i ,j);// 주변에 값이 있는지 확인하기
+                }
+        }
+
+        setleft();// 왼쪽으로 값을 정렬하기
+
+        console.log(backbord);
+
+        }
+        // 왼쪽으로 값을 정렬하기
+        function setleft(){
+        for(let i = 0;i<size;i++){
+            let index = 0;
+            for(let j = 0;j<size;j++){
+                if(backbord[i][j]!=0){
+                    let input = backbord[i][j];
+                    backbord[i][j] = backbord[i][index];
+                    backbord[i][index] = input;
+                    index++;
+                }
+            }
+        }
+    }   
+
+    function checkother(tempy,tempx){
+            console.log("miveKey: "+movekey)
+            if(movekey == "ArrowRight"){
+            if(tempx+1<size){
+            if(backbord[tempy][tempx] == backbord[tempy][tempx+1]){
+                backbord[tempy][tempx]+=backbord[tempy][tempx+1];
+                backbord[tempy][tempx+1] = 0;
+            }
+        }
+        }else if(movekey == "ArrowLeft"){
+            if(tempx-1>=0){
+                if(backbord[tempy][tempx] == backbord[tempy][tempx-1]){
+                    backbord[tempy][tempx]+=backbord[tempy][tempx-1];
+                    backbord[tempy][tempx-1] = 0;
+                }
+            }
+        }else if(movekey=="ArrowUp"){
+            if(tempy-1>=0){
+                if(backbord[tempy][tempx] == backbord[tempy-1][tempx]){
+                    backbord[tempy][tempx]+=backbord[tempy-1][tempx];
+                    backbord[tempy-1][tempx] = 0;
+                }
+            }
+        }else if(movekey == "ArrowDown"){
+            if(tempy+1<size){
+                if(backbord[tempy][tempx] == backbord[tempy+1][tempx]){
+                    backbord[tempy][tempx]+=backbord[tempy+1][tempx];
+                    backbord[tempy+1][tempx] = 0;
+                }
+            }
+        }
+        }
+
+        moveright();
+        moveleft();
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #totalBord{
+            text-align: center;
+            width: 800px;
+            height: 1000px;
+            margin: 0px auto;
+        }
+
+        #bord td{
+            width: 30px;
+            height: 30px;
+            border-collapse: collapse;
+            border: 0px
+        }
+        #bord{
+            margin-top: 50px;
+            padding: 30px 40px;
+        }
+        #center{
+            display: table;
+            margin: 0px auto;
+        }
+        #title{
+            display: table;
+            margin: 0px auto;
+            margin-top: 20px;
+        }
+        #ReStart{
+            display: none;
+            background-color: coral;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+            border-radius: 10px;
+            background-color: lightblue;
+            border: 0px;
+            font-weight: bold;
+        }
+
+        .white{background-color: white;}
+        .green{background-color: green;}
+        .red{background-color: red;}
+        .purple{background-color: purple;}
+        .orange{background-color: orange;}
+        .blue{background-color: blue;}
+        .yellow{background-color: yellow;}
+        .skyblue{background-color: skyblue;}
+        .gray{background-color: gray;}
+        .black{background-color: black;}
+
+    </style>
+</head>
+<body>
+    <div id="totalBord">
+    <h1>Tetris</h1>
+    <img src="image/home.png" width="30px" height="30px">
+    <hr>
+    <table id="title">
+        <tr>
+            <td><button id="Start"  onclick="gameStart()">game Start</button></td>
+            <td> <button id="ReStart" onclick="ReStart()">ReStart</button></td>
+        </tr>
+    </table>
+    <table id="center">
+        <tr>
+            <td id="bord"></td>
+        </tr>
+    </table>
+    </div>
+</body>
+<script src="Tetris.js"></script>
+</html>

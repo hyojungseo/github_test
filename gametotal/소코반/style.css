@@ -1,0 +1,72 @@
+tr.txc-table{
+    width: 100%;
+    table-layout: fixed;
+}
+table thead tr{
+    width: 100%;
+    table-layout: fixed;
+}
+#bord{
+    display:table;
+    margin: 0px auto;
+    margin-top: 100px;
+    table-layout: fixed;
+    
+}
+td{
+    width: 80px;
+    height: 80px;
+    border: 0px;
+    table-layout: fixed;
+    
+}
+.brick{
+    width: 30px;
+    height: 30px;
+    background-Color:lightgray;
+    background-position: center;
+    background-image: url(image/brick.png);
+}
+.cheese{
+    width: 0px;
+    height: 0px;
+    background-image: url(image/cheese.png);
+    background-position: center;
+    background-Color:forestgreen;
+}
+.road{
+    background-Color:forestgreen;
+}
+.arrive{
+    background-Color:red;
+}
+.mouse{
+    background-Color:forestgreen;
+    background-image: url(image/player.png);
+    background-position: center;
+    width: 40px;
+    height: 40px;
+}
+#restart{
+    margin: 20px, 20px auto;
+    background-color: tomato;
+    width: 100px;
+    height: 50px;
+    border: 0px;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+h1{
+    text-align: center;
+}
+button{
+    cursor: pointer;
+}
+#title,#home{
+    margin: 0px auto;
+    display: table;
+}
+hr{
+    width: 1000px;
+}

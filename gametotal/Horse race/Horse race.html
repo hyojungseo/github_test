@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #HorseHouse{
+            text-align: center;
+            margin: 0px auto;
+            
+        }
+        #Horsemeun
+        {
+            text-align: center;
+            border: 1px solid black;
+            margin: 0px auto;
+            margin-bottom: 50px;
+            border-collapse: collapse;
+        }
+        #horsetable{
+           
+            border: 1px solid black;
+            margin: 0px auto;
+            border-collapse: collapse;
+        }
+        #horsetable td{
+            border: 1px solid black;
+            width: 20px;
+            height: 20px;
+        }
+        #message{
+            border: 0px;
+        }
+        #result td{
+            margin: 0px auto;
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        #result{
+           
+            margin: 0px auto;
+            display: none;
+        }
+        #footer {
+            margin: 0 auto;
+            display: table;
+        }
+    </style>
+</head>
+<body>
+    <table id="HorseHouse">
+        <tr>
+            <td><h1>경마게임</h1></td>
+        </tr>
+    </table>
+    <table id="Horsemeun" border="1">
+        <tr>
+            <td colspan="5">1등으로 도착하는 말은 몇번일까요?</td>
+        </tr>
+        <tr>
+            <td style="background-color:red"><input type="radio" class="horse" onclick="choice(this)" >1번</td>
+            <td style="background-color:orange"> <input type="radio" class="horse" onclick="choice(this)">2번</td>
+            <td style="background-color:yellow"><input type="radio" class="horse"  onclick="choice(this)">3번</td>
+            <td style="background-color: green"><input type="radio" class="horse" onclick="choice(this)">4번</td>
+            <td style="background-color: blue"><input type="radio" class="horse"  onclick="choice(this)">5번</td>
+        </tr>
+        <tr>
+            <td><img src="image/red.png" width="100px" height="100px"></td>
+            <td><img src="image/orange.png"width="100px" height="100px"></td>
+            <td><img src="image/yellow.png"width="100px" height="100px"></td>
+            <td><img src="image/green.png"width="100px" height="100px"></td>
+            <td><img src="image/blue.png"width="100px" height="100px"></td>
+        </tr>
+        <tr>
+            <td colspan="5"><button id="choice" onclick="choiceover(this)">선택완료</button></td>
+        </tr>
+        
+    </table>
+    <table id="horsetable"></table>
+
+    <div id="footer">
+        <table id="result">
+            <tr>
+                <td class="resultname">1번</td>
+                <td class="score"></td>
+            </tr>
+            <tr>
+                <td class="resultname">2번</td>
+                <td class="score"></td>
+            </tr>
+            <tr>
+                <td class="resultname">3번</td>
+                <td class="score"></td>
+            </tr>
+            <tr>
+                <td class="resultname">4번</td>
+                <td class="score"></td>
+            </tr>
+            <tr>
+                <td class="resultname">5번</td>
+                <td class="score"></td>
+            </tr>
+            <tr>
+                <td colspan= "5" id="resultmessage"></td>
+            </tr>
+            <tr>
+                <td colspan="5"><button onclick="restart()">다시 시작</button></td>
+            </tr>
+        </table>
+        <br>
+
+    </div>
+    
+    <script src="Horse race.js"></script>
+</body>
+
+</html>

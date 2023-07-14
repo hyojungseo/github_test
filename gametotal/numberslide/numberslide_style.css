@@ -1,0 +1,39 @@
+#mainbord td {
+    font-size: 40px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    color:white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+table{
+    margin: 0px auto;
+}
+h1{
+    text-align: center;
+}
+#gameover {
+    display: none;
+}
+#mainhome{
+    display: table;
+    margin: 0px auto;
+    cursor: pointer;
+}
+#bord{
+    height: 300px;
+    width: 500px;
+    margin: 0px auto;
+    margin-top: 50% auto;
+}
+#showResult td {
+    margin-top: 30px auto;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    color:white;
+    border-radius: 10px;
+    
+}

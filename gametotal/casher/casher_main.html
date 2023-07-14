@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            text-align: center;
+            margin: 0 auto;
+            display: table;
+        }
+        table{
+            width: 500px;
+            border-collapse: collapse;
+            border: 1px solid gray;
+        }
+        td{
+            width: 100px;
+            height: 50px;
+        }
+        #title{
+            background-color: darksalmon;
+        }
+        .adminminus,
+        .userminus{
+            background-color: lavender;
+            cursor: pointer;
+        }
+        .adminplus,
+        .userplus{
+            background-color: antiquewhite;
+            cursor: pointer;
+        }
+        #total{
+            display: none;
+          
+        }
+    </style>
+</head>
+<body>
+    <div id="border">
+        <h1>식권 자판기</h1>
+        <table id="admin" border="1">
+            <tr>
+                <td colspan="5" id="title" style="font-weight: bold;">관리자</td>
+            </tr>
+            <tr>
+                <td>오만원권</td>
+                <td class="adminmoney">50,000</td>
+                <td class="adminnumber">0</td>
+                <td class="adminplus" onclick="adminplus(this)"><span>+</span></td>
+                <td class="adminminus" onclick="adminminus(this)"><span>-</span></td>
+            </tr>
+            <tr>
+                <td>일만원</td>
+                <td class="adminmoney">10,000</td>
+                <td class="adminnumber">0</td>
+                <td class="adminplus" onclick="adminplus(this)"><span>+</span></td>
+                <td class="adminminus" onclick="adminminus(this)"><span>-</span></td>
+            </tr>
+            <tr>
+                <td>오천원권</td>
+                <td class="adminmoney">5,000</td>
+                <td class="adminnumber">0</td>
+                <td class="adminplus" onclick="adminplus(this)"><span>+</span></td>
+                <td class="adminminus" onclick="adminminus(this)"><span>-</span></td>
+            </tr>
+            <tr>
+                <td>일천원권</td>
+                <td class="adminmoney">1,000</td>
+                <td class="adminnumber">0</td>
+                <td class="adminplus" onclick="adminplus(this)"><span>+</span></td>
+                <td class="adminminus" onclick="adminminus(this)"><span>-</span></td>
+            </tr>
+            <tr>
+                <td>오백원</td>
+                <td class="adminmoney">500</td>
+                <td class="adminnumber">0</td>
+                <td class="adminplus" onclick="adminplus(this)"><span>+</span></td>
+                <td class="adminminus" onclick="adminminus(this)"><span>-</span></td>
+            </tr>
+            <tr>
+                <td>일백원</td>
+                <td class="adminmoney">100</td>
+                <td class="adminnumber">0</td>
+                <td class="adminplus" onclick="adminplus(this)"><span>+</span></td>
+                <td class="adminminus" onclick="adminminus(this)"><span>-</span></td>
+            </tr>
+            <tr>
+                <td colspan="2">식권수량</td>
+                <td class="adminnumber">0</td>
+                <td class="adminplus" onclick="adminplus(this)"><span>+</span></td>
+                <td class="adminminus" onclick="adminminus(this)"><span>-</span></td>
+            </tr>
+        </table>
+
+        <hr>
+            <table id="user" border="1">
+                
+                <tr>
+                    <td colspan="5" id="title" style="font-weight: bold;">사용자</td>
+                </tr>
+                <tr>
+                    <td>오만원권</td>
+                    <td class="usermoney">50,000</td>
+                    <td class="usernumber">0</td>
+                    <td class="userplus" onclick="userplus(this)"><span>+</span></td>
+                    <td class="userminus" onclick="userminus(this)"><span>-</span></td>
+                </tr>
+                <tr>
+                    <td>일만원</td>
+                    <td class="money">10,000</td>
+                    <td class="usernumber">0</td>
+                    <td class="userplus" onclick="userplus(this)"><span>+</span></td>
+                    <td class="userminus" onclick="userminus(this)"><span>-</span></td>
+                </tr>
+                <tr>
+                    <td>오천원권</td>
+                    <td class="money">5,000</td>
+                    <td class="usernumber">0</td>
+                    <td class="userplus" onclick="userplus(this)"><span>+</span></td>
+                    <td class="userminus" onclick="userminus(this)"><span>-</span></td>
+                </tr>
+                <tr>
+                    <td>일천원권</td>
+                    <td class="money">1,000</td>
+                    <td class="usernumber">0</td>
+                    <td class="userplus" onclick="userplus(this)"><span>+</span></td>
+                    <td class="userminus" onclick="userminus(this)"><span>-</span></td>
+                </tr>
+                <tr>
+                    <td>오백원</td>
+                    <td class="money">500</td>
+                    <td class="usernumber">0</td>
+                    <td class="userplus" onclick="userplus(this)"><span>+</span></td>
+                    <td class="userminus" onclick="userminus(this)"><span>-</span></td>
+                </tr>
+                <tr>
+                    <td>일백원</td>
+                    <td class="money">100</td>
+                    <td class="usernumber">0</td>
+                    <td class="userplus" onclick="userplus(this)"><span>+</span></td>
+                    <td class="userminus" onclick="userminus(this)"><span>-</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2">식권수량</td>
+                    <td class="usernumber">0</td>
+                    <td class="userplus" onclick="userplus(this)"><span>+</span></td>
+                    <td class="userminus" onclick="userminus(this)"><span>-</span></td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="background-color: deepskyblue;">
+                        <span id="intomoney" style="font-weight: bold;"></span><br>
+                        <span id="resulttext" style="font-weight: bold;"></span>
+                    </td>
+                </tr>
+                <tr style="border: 0px solid;">
+                    <td colspan="5" style="text-align: center;"><button onclick="result()">구입하기</button></td>
+                </tr>
+        </table>
+        <p id="resulttext"></p>
+    </div>
+    <script src="casher.js"></script>
+</body>
+</html>

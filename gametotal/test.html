@@ -1,0 +1,61 @@
+<script>
+     let map = [
+        [ 0,  1,  2,  3, 4],
+        [15, 16, 16, 16, 5],
+        [14, 16, 16, 16, 6],
+        [13, 16, 16, 16, 7],
+        [12, 11, 10,  9, 8]
+    ];
+
+
+    let before = 0;
+    let x = 0;
+    let y = 0;
+    let after = 0;
+    let size = 5;
+    let round = 0;
+
+while(true){
+
+    
+    let r = Math.floor(Math.random()*5)+1;
+
+    if(round>2){
+        break;
+    }
+    
+    console.log(after%15);
+    if(after+r>=15){
+        after%=15;
+        round++;
+    }
+    after+=r;
+    
+    console.log("after: "+after);
+
+    map[y][x] = before; 
+
+    for(let i = 0;i<5;i++){
+        for(let j = 0;j<5;j++){
+            if(map[i][j] == after){
+                before = map[i][j];
+                map[i][j] = '옷';
+                y = i;
+                x = j;
+                break;
+            }
+        }
+    }
+
+    for(let i = 0;i<size;i++){
+        for(let j = 0;j<size;j++){
+            document.write(map[i][j]);
+        }
+        document.write("<br>");
+    }
+    document.write("<br>");
+
+}
+    
+
+</script>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #header {
+             text-align: center; 
+        }
+        a {
+            color: lightblue;
+            text-decoration: none;
+        }
+        table{
+            margin: 0 auto;
+            display: table;
+        }
+        tr{
+            table-layout: fixed;
+        }
+        #center { text-align: center; }
+        .btn {
+            width: 100px;
+            height: 100px;
+            background-color: lightgray;
+            border-style: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            table-layout: fixed;
+        }
+        .btn-img {
+            width: 100px;
+            height: 100px;
+            border-style: none;
+            border: 5px solid lightgray;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: lightgray;
+            table-layout: fixed;
+        }
+        #tic {
+            width: 90px;
+        }
+        
+    </style>
+
+</head>
+<body>
+    
+    <!-- ---------------------------- header start ----------------------------- -->
+    <div id="header">
+        <h3><a href="total.html">HyoJung's PROJECT</a></h3>
+        <h6>Mine Games & System</h6>
+    </div>
+    
+    <hr width="300px" color="lightblue" size="1">
+    <br>
+    <!-- ---------------------------- header finish ----------------------------- -->
+
+    <div id="center">
+        <table>
+            <tr>
+                <td> <button class="btn" onclick="location.href='1to50/1to50_main.html'"><img src="image/1to50.jpg" width="90px" height="90px"></button></button></td>
+                <td><button class="btn" onclick="location.href='numberslide/numberslide_main.html'"><img src="image/numberslide.jpg" width="90px" height="90px"></button></td>
+                <td><button class="btn" onclick="location.href='snakegame/snakegame.html'"><img src="image/snakegame.jpg" width="90px" height="90px"></button></button></td>
+                <td><button class="btn" onclick="location.href='tictactoe/tictactoe_main.html'"><img src="image/tictaktoe.JPG" width="90px" height="90px"></button></button></td>
+            </tr>
+            <tr>
+                <td><button class="btn" onclick="location.href='Horse race/Horse race.html'"><img src="image/Horserace.JPG" width="90px" height="90px"></button></button></td>
+                <td><button class="btn" onclick="location.href='Tetris/Tetris.html'"><img src="image/Tetris.JPG" width="90px" height="90px"></button></td>
+                <td><button class="btn" onclick="location.href='소코반/stage1.html'"><img src="image/소코반.png" width="90px" height="90px"></button></td>
+                <td><button class="btn" onclick="location.href='callender/callender_main.html'"><img src="image/callender.JPG" width="90px" height="90px"></button></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button class="btn" onclick="location.href='casher/casher_main.html'"><img src="image/casher.JPG" width="90px" height="90px"></button></td>
+                <td><button class="btn" onclick="location.href='장바구니/장바구니.html'"><img src="image/장바구니.JPG" width="90px" height="90px"></button></td>
+            </tr>
+           
+        </table>
+    </div>
+    <script>
+
+        
+        let $btn = document.querySelectorAll(".btn");
+        for(let i = 0;i<$btn.length;i++){
+            $btn[i].addEventListener("mouseover",onmouse);
+            $btn[i].addEventListener("mouseout",outmouse);
+        }
+        
+
+        function onmouse(){
+            let btn=['1to50','numberslide',"snakegame",'tic tac toe',"Horse race","Tetris","sokoban","callender",'casher','shoping'];
+            console.log(this);
+            for(let i = 0;i<$btn.length;i++){
+                if(this == $btn[i]){
+                    console.log("$bin[i]: "+i);
+                    this.style.backgroundColor="lightgray";
+                    this.innerHTML = btn[i];
+                }
+            }
+        }
+
+        function outmouse(){
+            let imgnumber=['1to50.jpg','numberslide.jpg',"snakegame.jpg",'tictaktoe.JPG',"Horserace.JPG","Tetris.JPG","소코반.png","callender.JPG",'casher.JPG','장바구니.JPG'];
+            for(let i = 0;i<$btn.length;i++){
+                    $btn[i].style.backgroundColor="lightgray";
+                    $btn[i].innerHTML = `<img src="image/${imgnumber[i]}" width="90px" height="90px">`;
+            }
+        }
+    </script>
+</body>
+</html>
